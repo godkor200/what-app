@@ -1,0 +1,20 @@
+#docker-compose-mariadb.yaml
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: dev-mariadb
+    restart: always
+    ports:
+      - 3316:3306
+    environment:
+      TZ: Asia/Seoul
+      MARIADB_DATABASE: whatapp
+      MARIADB_USER: root
+      MARIADB_PASSWORD: 13241324
+      MARIADB_ROOT_PASSWORD: 13241324
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    volumes:
+      - ./dev-mariadb/data:/var/lib/mysql
