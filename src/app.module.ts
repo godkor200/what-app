@@ -24,7 +24,7 @@ dotenv.config({
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: 'whatapp',
-      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+      entities: [__dirname + '/../dist/*.entity{.ts,.js}'],
       synchronize: false,
     }),
     UsersModule,
