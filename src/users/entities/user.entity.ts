@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('User')
+@Entity('users')
 export class UserEntity {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('increment')
   id: string;
 
   @Column({ length: 30 })
@@ -17,9 +17,9 @@ export class UserEntity {
   @Column({ length: 30 })
   role: string;
 
-  @Column({ length: 3 })
+  @Column()
   height: number;
 
-  @Column({ length: 3 })
+  @Column()
   weight: number;
 }

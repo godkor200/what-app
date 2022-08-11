@@ -1,4 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -11,31 +15,36 @@ export class UsersService {
     @InjectRepository(UserEntity)
     private userRepository: Repository<UserEntity>,
   ) {}
+  private async checkUserExists(username: string): Promise<boolean> {
+    const user = await this.userRepository.findOne({
+      where: { username: username },
+    });
+    return user !== undefined;
+  }
   async create(createUserDto: CreateUserDto) {
-    const { username, password, male, role, height, weight } = createUserDto;
-    const user = new UserEntity();
-    user.username = username;
-    user.password = password;
-    user.male = male;
-    user.role = role;
-    user.height = height;
-    user.weight = weight;
-    return await this.userRepository.save(user);
+    if (await this.checkUserExists(createUserDto.username)) {
+      throw new UnprocessableEntityException('중복 되는 유저 아이디 입니다.');
+    }
+    return await this.userRepository.save(createUserDto);
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll() {
+    return await this.userRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string) {
+    const user = await this.userRepository.findOne({ where: { id: id } });
+    if (!user) {
+      throw new NotFoundException('유저를 찾을 수 없습니다.');
+    }
+    return user;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: string, updateUserDto: UpdateUserDto) {
+    return await this.userRepository.update({ id }, { ...updateUserDto });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: string) {
+    return await this.userRepository.delete(id);
   }
 }
