@@ -3,11 +3,11 @@ import {
   NotFoundException,
   UnprocessableEntityException,
 } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { UserEntity } from './entities/user.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { CreateUserDto } from '@modules/users/dto/create-user.dto';
+import { UpdateUserDto } from '@modules/users/dto/update-user.dto';
+import { UserEntity } from '@modules/users/entities/user.entity';
 
 @Injectable()
 export class UsersService {
@@ -15,12 +15,14 @@ export class UsersService {
     @InjectRepository(UserEntity)
     private userRepository: Repository<UserEntity>,
   ) {}
-  private async checkUserExists(username: string): Promise<boolean> {
+
+  async checkUserExists(username: string): Promise<boolean> {
     const user = await this.userRepository.findOne({
       where: { username: username },
     });
     return user !== undefined;
   }
+
   async create(createUserDto: CreateUserDto) {
     if (await this.checkUserExists(createUserDto.username)) {
       throw new UnprocessableEntityException('중복 되는 유저 아이디 입니다.');

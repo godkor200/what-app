@@ -1,24 +1,18 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
-import * as dotenv from 'dotenv';
-import * as path from 'path';
-import { UsersModule } from './users/users.module';
-import { UserEntity } from './users/entities/user.entity';
-import { AuthModule } from './auth/auth.module';
-
-dotenv.config({
-  path: path.resolve(
-    process.env.NODE_ENV === 'production'
-      ? '.production.env'
-      : '.development.env',
-  ),
-});
+import { AppController } from '@modules/healthCheck/app.controller';
+import { AppService } from '@modules/healthCheck/app.service';
+import { UsersModule } from '@modules/users/users.module';
+import { UserEntity } from '@modules/users/entities/user.entity';
+import { AuthModule } from '@/modules/auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: ['.development.env', '.production.env'],
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       port: 3316,
