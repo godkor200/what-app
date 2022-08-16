@@ -6,9 +6,24 @@ import { UsersModule } from '@modules/users/users.module';
 import { UserEntity } from '@modules/users/entities/user.entity';
 import { AuthModule } from '@/modules/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { utilities, WinstonModule } from 'nest-winston';
+import * as winston from 'winston';
 
 @Module({
   imports: [
+    WinstonModule.forRoot({
+      transports: [
+        new winston.transports.Console({
+          level: process.env.NODE_ENV === 'production' ? 'info' : 'silly',
+          format: winston.format.combine(
+            winston.format.timestamp(),
+            utilities.format.nestLike('whatApp', {
+              prettyPrint: true,
+            }),
+          ),
+        }),
+      ],
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ['.development.env', '.production.env'],

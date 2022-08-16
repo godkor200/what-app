@@ -34,10 +34,12 @@ export class AuthService {
       .catch((err) => {
         throw new NotFoundException('유저 정보가 없습니다.');
       });
+
     //TODO: 비밀번호 해쉬 기능
     if (userData.password !== userInfo.password) {
       throw new ForbiddenException('비밀번호가 불일치합니다.');
     }
+
     const payload = {
       username: userData.username,
       id: userData.id,
