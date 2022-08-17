@@ -75,6 +75,10 @@
       "ts"
     ],
     "rootDir": "src",
+    "moduleNameMapper": {
+      "^@modules/users/(.*)$": "<rootDir>/modules/users/$1",
+      "^@modules/healthCheck/(.*)$": "<rootDir>/modules/healthCheck/$1"
+    },
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
