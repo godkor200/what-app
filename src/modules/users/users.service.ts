@@ -34,7 +34,7 @@ export class UsersService {
     return await this.userRepository.find();
   }
 
-  async findOne(id: string) {
+  async findOne(id: number) {
     const user = await this.userRepository.findOne({ where: { id: id } });
     if (!user) {
       throw new NotFoundException('유저를 찾을 수 없습니다.');
@@ -42,11 +42,11 @@ export class UsersService {
     return user;
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto) {
+  async update(id: number, updateUserDto: UpdateUserDto) {
     return await this.userRepository.update({ id }, { ...updateUserDto });
   }
 
-  async remove(id: string) {
+  async remove(id: number) {
     return await this.userRepository.delete(id);
   }
 }
