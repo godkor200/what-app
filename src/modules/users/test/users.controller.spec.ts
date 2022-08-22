@@ -5,13 +5,7 @@ import { userStub } from './stubs/user.stubs';
 import { UserEntity } from '../entities/user.entity';
 import { UnprocessableEntityException } from '@nestjs/common';
 
-// jest.mock('../users.service.ts');
-export const UsersServiceMock = jest.fn().mockReturnValue({
-  checkUserExists: jest.fn().mockResolvedValue(true),
-  create: jest.fn().mockResolvedValue(userStub()),
-  findAll: jest.fn().mockResolvedValue([userStub()]),
-  findOne: jest.fn().mockResolvedValue(userStub()),
-});
+jest.mock('../users.service.ts');
 
 describe('UsersController', () => {
   let controller: UsersController;
@@ -31,7 +25,7 @@ describe('UsersController', () => {
 
   describe('create', () => {
     describe('when create is called', () => {
-      let user: UserEntity;
+      let user: UserEntity | any;
       beforeEach(async () => {
         const { username, password, role, height, weight } = userStub();
         user = await controller.create({
@@ -43,6 +37,7 @@ describe('UsersController', () => {
           weight,
         });
       });
+
       it('when it should return a user', async () => {
         expect(user).toEqual(userStub());
       });
