@@ -4,7 +4,9 @@ import { AppController } from '@modules/healthCheck/app.controller';
 import { AppService } from '@modules/healthCheck/app.service';
 import { UsersModule } from '@modules/users/users.module';
 import { UserEntity } from '@modules/users/entities/user.entity';
+import { RoutineEntity } from '@modules/routine/entities/routine.entities';
 import { AuthModule } from '@/modules/auth/auth.module';
+import { RoutineModule } from '@modules/routine/routine.module';
 import { ConfigModule } from '@nestjs/config';
 import { utilities, WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
@@ -35,13 +37,14 @@ import * as winston from 'winston';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: 'whatapp',
-      entities: [UserEntity],
+      entities: ['./modules/*/entities/*'],
       synchronize: true,
       migrationsRun: true,
       // dropSchema: true, //this option maybe helpful
     }),
     UsersModule,
     AuthModule,
+    RoutineModule,
   ],
   controllers: [AppController],
   providers: [AppService],
