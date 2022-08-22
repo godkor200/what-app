@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Injectable,
   NotFoundException,
   UnprocessableEntityException,
@@ -25,7 +26,7 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     if (await this.checkUserExists(createUserDto.username)) {
-      throw new UnprocessableEntityException('중복 되는 유저 아이디 입니다.');
+      return new UnprocessableEntityException('중복 되는 유저 아이디 입니다.');
     }
     return await this.userRepository.save(createUserDto);
   }
@@ -37,7 +38,7 @@ export class UsersService {
   async findOne(id: number) {
     const user = await this.userRepository.findOne({ where: { id: id } });
     if (!user) {
-      throw new NotFoundException('유저를 찾을 수 없습니다.');
+      return new NotFoundException('유저를 찾을 수 없습니다.');
     }
     return user;
   }
