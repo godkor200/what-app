@@ -1,7 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { RoutineEntity } from '@/modules/routine/entities/routine.entities';
+import { DateEntity } from '@/utils/entities/dateEntities';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('users')
-export class UserEntity {
+export class UserEntity extends DateEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
@@ -22,4 +24,7 @@ export class UserEntity {
 
   @Column()
   weight: number;
+
+  @OneToMany((type) => RoutineEntity, (routine) => routine.user)
+  routine: RoutineEntity;
 }
