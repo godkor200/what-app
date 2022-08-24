@@ -1,4 +1,4 @@
-import { RoutineEntity } from '@/modules/routine/entities/routine.entities';
+import { RoutineEntity } from '@/modules/routine/entities/routine.entitiy';
 import { DateEntity } from '@/utils/entities/dateEntities';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
