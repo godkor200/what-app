@@ -1,73 +1,52 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+### What Day
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+1. 목적
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+웨이트 트레닝을 하는 사람들을 대상으로, 운동을 기록하여 체계적으로 관리하고 싶은 사람들이 쉽고 간편하게 쓸 수 있는 운동 루틴 스케줄러
 
-## Description
+2. 배경
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1)
+운동을 처음 배우는 사람이나 익숙하지 않은 사람들은 스스로 운동 루틴을 짜는것이 쉽지 않음
 
-## Installation
+어떤 근육을 키워야하고, 타겟 부위를 자극하려면 어떤 운동을 해야하는지, 몇 분할로 스케줄을 가져가야 자극과 휴식이 적절한지 하나하나 직접 부딪혀 알아가며 시작해야함
 
-```bash
-$ npm install
-```
+운동 이름을 잘 몰라도 직관적인 UI를 통해 운동 스케줄을 짤 수 있고, 관리할 수 있도록 도움이 되고자함
 
-## Running the app
+2)
 
-```bash
-# development
-$ npm run start
+운동에 익숙한 사람들도 운동 일지, 루틴관리 용도로 사용할 수 있음
 
-# watch mode
-$ npm run start:dev
+오늘 수행한 운동이 어떤 방법으로 했을때 자극이 어느정도였는지, 자세가 잘못된 부분이 없었는지 등을 기록할 수 있음
 
-# production mode
-$ npm run start:prod
-```
+3. 방향성
 
-## Test
+꼭 필요한 기능을 탑재한 최소 기능 제품(MVP, Minimum Viable Product)을 만들어 애플 앱스토어에 출시하는 것을 목표로 함
 
-```bash
-# unit tests
-$ npm run test
+커뮤니티, 커머스 기능을 추가하여 피트니스 라이프스타일 서비스로 얼마든지 확장할 수 있음
 
-# e2e tests
-$ npm run test:e2e
+BUT 1차 마일스톤은 최소기능제품으로 앱출시하기!
 
-# test coverage
-$ npm run test:cov
-```
+4. 일정
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+[개발일정](https://www.notion.so/b6cff9c309ee40928cebeb1c1840493b)
 
-## Stay in touch
+[백엔드 배포 주소](http://3.34.91.5:8080/) 내림
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+[피그마 기획](https://www.figma.com/file/WrY1AXtoFtoKrMuRmcZrvL/What-Day-APP?node-id=1%3A3)
 
-## License
+## 시작하기
 
-Nest is [MIT licensed](LICENSE).
+다운 받은후 콘솔에서
+
+
+client :
+
+npm i
+
+react-native run-ios
+
+server :
+
+npm run start
